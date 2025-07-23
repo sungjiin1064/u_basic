@@ -6,8 +6,8 @@ public class Human : MonoBehaviour
 {
     [SerializeField] private HumanBone[] allBones;
 
-    private Arm arm;
-    private Leg leg;
+    [SerializeField] private Arm[] arm;
+    private Leg[] leg;
     private Body body;
     private Head head;
 
@@ -17,15 +17,21 @@ public class Human : MonoBehaviour
     {
         allBones = GetComponentsInChildren<HumanBone>();
 
-        arm = GetComponentInChildren<Arm>();
-        leg = GetComponentInChildren<Leg>();
+        arm = GetComponentsInChildren<Arm>();
+        leg = GetComponentsInChildren<Leg>();
         body = GetComponentInChildren<Body>();
         head = GetComponentInChildren<Head>();
 
-        for (int i = 0; i < leg.Length; i++)
+        for(int i = 0;i<leg.Length;i++)
         {
-            leg.SetRenderProperty(legColor, legSortingOrder);
+            leg[i].SetRenderProperty(legColor, legSortingOrder);
         }
+        for (int i = 0; i < arm.Length; i++)
+        {
+            arm[i].SetRenderProperty(legColor, legSortingOrder);
+        }
+        body.SetRenderProperty(legColor, legSortingOrder);
+        head.SetRenderProperty(legColor, legSortingOrder);
 
     }
 
