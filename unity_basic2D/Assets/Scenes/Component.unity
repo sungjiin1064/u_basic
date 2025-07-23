@@ -690,7 +690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allBones: []
   arm: []
-  legColor: {r: 0, g: 0, b: 0, a: 0}
+  legColor: {r: 1, g: 0, b: 0, a: 1}
   legSortingOrder: 1
 --- !u!4 &1018577152
 Transform:
