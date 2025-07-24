@@ -58,6 +58,8 @@ public class PlayerHander : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         //Debug.Log($"horizontalÀÇ °ª : {horizontal}");
 
+        Vector2 moveVector = new Vector2(horizontal * moveSpeed, rigidbody2D.velocity.y);
+        
         rigidbody2D.velocity = new Vector2(horizontal * moveSpeed, rigidbody2D.velocity.y);
     }
 }
