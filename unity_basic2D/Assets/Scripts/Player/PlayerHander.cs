@@ -13,9 +13,12 @@ public class PlayerHander : MonoBehaviour
     [SerializeField] private float groundDistance = 1.2f;
     [SerializeField] private LayerMask groundLayer;
 
+    private PlayerAnimatorController playerAnimatorController;
+
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        playerAnimatorController = GetComponent<PlayerAnimatorController>();
     }
     private void Start()
     {
@@ -55,10 +58,21 @@ public class PlayerHander : MonoBehaviour
 
     private void Move()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        //Debug.Log($"horizontalÀÇ °ª : {horizontal}");
+        playerAnimatorController.PlayerBoolAnimation("IsLadderMove", true);
 
-        Vector2 moveVector = new Vector2(horizontal * moveSpeed, rigidbody2D.velocity.y);
+        float horizontal = Input.GetAxisRaw("Horizontal");
+
+        if(horizontal == 0)
+        {
+            playerAnimatorController.PlayerMoveAnimation();
+        }
+        else
+        {
+
+        }
+
+
+            Vector2 moveVector = new Vector2(horizontal * moveSpeed, rigidbody2D.velocity.y);
 
         rigidbody2D.velocity = moveVector;
     }
