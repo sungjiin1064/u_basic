@@ -15,6 +15,7 @@ public class PlayerHander : MonoBehaviour
 
     private PlayerAnimatorController playerAnimatorController;
 
+    //private float horizontal;
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -42,7 +43,7 @@ public class PlayerHander : MonoBehaviour
             _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, jumpPower);
         }
         Debug.DrawRay(transform.position, Vector3.down * groundDistance, Color.red);
-               
+
     }
 
     private bool CanJump()
@@ -57,21 +58,27 @@ public class PlayerHander : MonoBehaviour
     }
 
     private void Move()
-    {   
+    {
         float horizontal = Input.GetAxisRaw("Horizontal");
 
-        if(horizontal == 0)
+        //if(horizontal == 0)
+        //{
+        //    playerAnimatorController.PlayerMoveAnimation();
+        //}
+        //else
+        //{
+        //    playerAnimatorController.PlayerIsLadderMoveAnimation();
+        //}              
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            playerAnimatorController.PlayerMoveAnimation();
-        }
-        else
-        {
-            playerAnimatorController.PlayerIsLadderMoveAnimation();
+            horizontal *= 0.5f;
+
         }
 
+        playerAnimatorController.PlayFloatAnimation("Speed", Mathf.Abs(horizontal));
 
-         Vector2 moveVector = new Vector2(horizontal * moveSpeed, _rigidbody2D.velocity.y);
 
-        _rigidbody2D.velocity = moveVector;
+
+        _rigidbody2D.velocity = new Vector2(horizontal * moveSpeed, _rigidbody2D.velocity.y);
     }
 }
