@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerHander : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rigidbody2D;
+    [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private float moveSpeed = 5.0f;
 
     [SerializeField] private float jumpPower = 5f;
@@ -17,7 +17,7 @@ public class PlayerHander : MonoBehaviour
 
     private void Awake()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
         playerAnimatorController = GetComponent<PlayerAnimatorController>();
     }
     private void Start()
@@ -27,7 +27,7 @@ public class PlayerHander : MonoBehaviour
 
     private void Setup()
     {
-        rigidbody2D.freezeRotation = true;
+        _rigidbody2D.freezeRotation = true;
     }
     private void Update()
     {
@@ -39,7 +39,7 @@ public class PlayerHander : MonoBehaviour
     {
         if (CanJump())
         {
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpPower);
+            _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, jumpPower);
         }
         Debug.DrawRay(transform.position, Vector3.down * groundDistance, Color.red);
                
@@ -57,9 +57,7 @@ public class PlayerHander : MonoBehaviour
     }
 
     private void Move()
-    {
-        playerAnimatorController.PlayerBoolAnimation("IsLadderMove", true);
-
+    {   
         float horizontal = Input.GetAxisRaw("Horizontal");
 
         if(horizontal == 0)
@@ -68,12 +66,12 @@ public class PlayerHander : MonoBehaviour
         }
         else
         {
-
+            playerAnimatorController.PlayerIsLadderMoveAnimation();
         }
 
 
-            Vector2 moveVector = new Vector2(horizontal * moveSpeed, rigidbody2D.velocity.y);
+         Vector2 moveVector = new Vector2(horizontal * moveSpeed, _rigidbody2D.velocity.y);
 
-        rigidbody2D.velocity = moveVector;
+        _rigidbody2D.velocity = moveVector;
     }
 }

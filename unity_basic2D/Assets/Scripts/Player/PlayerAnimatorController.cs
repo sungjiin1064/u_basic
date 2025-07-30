@@ -14,8 +14,13 @@ public class PlayerAnimatorController : MonoBehaviour
         PlayerBoolAnimation("IsMove", true);
         PlayerBoolAnimation("IsLadderMove", false);
     }
-    
-    public void PlayerBoolAnimation(string paraName, bool enable)
+    public void PlayerIsLadderMoveAnimation()
+    {
+        PlayerBoolAnimation("IsMove", false);
+        PlayerBoolAnimation("IsLadderMove", true);
+    }
+
+    private void PlayerBoolAnimation(string paraName, bool enable)
     {
         animator.SetBool(paraName, enable);
     }

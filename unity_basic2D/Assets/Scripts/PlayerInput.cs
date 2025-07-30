@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D boxCollider2D;
-    [SerializeField] private Rigidbody2D rigidbody2D;
+    [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private float movespeed = 5f;
     private Vector2 moveVector;
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody2D.velocity = moveVector.normalized;
+        _rigidbody2D.velocity = moveVector.normalized;
     }
 
     // Update is called once per frame
@@ -34,6 +34,6 @@ public class PlayerInput : MonoBehaviour
             moveVector = new Vector2(1, 0);
         }
 
-        rigidbody2D.velocity = moveVector * movespeed;
+        _rigidbody2D.velocity = moveVector * movespeed;
     }
 }
