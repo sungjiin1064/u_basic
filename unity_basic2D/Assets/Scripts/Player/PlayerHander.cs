@@ -61,21 +61,21 @@ public class PlayerHander : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
 
-        //if(horizontal == 0)
-        //{
-        //    playerAnimatorController.PlayerMoveAnimation();
-        //}
-        //else
-        //{
-        //    playerAnimatorController.PlayerIsLadderMoveAnimation();
-        //}              
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (horizontal == 0)
         {
-            horizontal *= 0.5f;
-
+            playerAnimatorController.PlayerMoveAnimation();
         }
+        else
+        {
+            playerAnimatorController.PlayerIsLadderMoveAnimation();
+        }
+        //if (Input.GetKeyDown(KeyCode.LeftShift))
+        //{
+        //    horizontal *= 0.5f;
 
-        playerAnimatorController.PlayFloatAnimation("Speed", Mathf.Abs(horizontal));
+        //}
+
+        //playerAnimatorController.PlayFloatAnimation("Speed", Mathf.Abs(horizontal));
 
 
 
