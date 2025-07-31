@@ -15,7 +15,7 @@ public class PlayerHander : MonoBehaviour
 
     private PlayerAnimatorController playerAnimatorController;
 
-    //private float horizontal;
+    private float horizontal;
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -59,23 +59,23 @@ public class PlayerHander : MonoBehaviour
 
     private void Move()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
+        //horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = Input.GetAxis("Horizontal");
 
-        if (horizontal == 0)
-        {
-            playerAnimatorController.PlayerMoveAnimation();
-        }
-        else
-        {
-            playerAnimatorController.PlayerIsLadderMoveAnimation();
-        }
-        //if (Input.GetKeyDown(KeyCode.LeftShift))
+        //if (horizontal == 0)
         //{
-        //    horizontal *= 0.5f;
-
+        //    playerAnimatorController.PlayerMoveAnimation();
         //}
+        //else
+        //{
+        //    playerAnimatorController.PlayerIsLadderMoveAnimation();
+        //}
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            horizontal *= 0.5f;
+        }
 
-        //playerAnimatorController.PlayFloatAnimation("Speed", Mathf.Abs(horizontal));
+        playerAnimatorController.PlayFloatAnimation("Speed", Mathf.Abs(horizontal));
 
 
 
