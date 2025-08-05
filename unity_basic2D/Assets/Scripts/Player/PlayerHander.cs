@@ -56,7 +56,6 @@ public class PlayerHander : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundDistance, groundLayer);
         return hit.collider != null;
     }
-
     private void Move()
     {
         //horizontal = Input.GetAxisRaw("Horizontal");
@@ -76,8 +75,6 @@ public class PlayerHander : MonoBehaviour
         }
 
         playerAnimatorController.PlayFloatAnimation("Speed", Mathf.Abs(horizontal));
-
-
 
         _rigidbody2D.velocity = new Vector2(horizontal * moveSpeed, _rigidbody2D.velocity.y);
     }
