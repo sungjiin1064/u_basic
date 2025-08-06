@@ -9,7 +9,14 @@ public class DeathTrigger : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            GameOverPanel.SetActive(true);
+            var Life = collision.GetComponent<PlayerEntity>();
+            Life.OnLifeUPdated(-1);
+            if(Life.IsPlayerDead())
+            {
+                GameOverPanel.SetActive(true);
+            }
+
+            //GameOverPanel.SetActive(true);
         }
     }
 }
