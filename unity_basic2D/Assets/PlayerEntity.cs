@@ -13,7 +13,7 @@ public class PlayerEntity : MonoBehaviour
     [SerializeField] int maxCoinForLife =100;
     private void Start()
     {
-        currentLife = maxLife/2;
+        //currentLife = maxLife/2;
         currentCoin = 0;
         OnLifeUPdated(0);
         OnCoinUPdated(currentCoin);

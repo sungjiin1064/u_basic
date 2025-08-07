@@ -14,9 +14,7 @@ public class DeathTrigger : MonoBehaviour
             if(Life.IsPlayerDead())
             {
                 GameOverPanel.SetActive(true);
-            }
-
-            //GameOverPanel.SetActive(true);
+            }           
         }
     }
 }
