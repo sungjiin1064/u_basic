@@ -11,10 +11,11 @@ public class DeathTrigger : MonoBehaviour
         {
             var Life = collision.GetComponent<PlayerEntity>();
             Life.OnLifeUPdated(-1);
-            if(Life.IsPlayerDead())
-            {
-                GameOverPanel.SetActive(true);
-            }           
+            GameOverPanel.SetActive(true);
+            //if(Life.IsPlayerDead())
+            //{
+            //    GameOverPanel.SetActive(true);
+            //}           
         }
     }
 }

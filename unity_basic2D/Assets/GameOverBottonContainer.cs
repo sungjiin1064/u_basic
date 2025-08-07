@@ -16,6 +16,7 @@ public class GameOverBottonContainer : MonoBehaviour
         Debug.Log("메인메뉴 버튼");
         SceneManager.LoadScene(0);
     }
+
     public void ButtonExit()
     {
         Debug.Log("게임종료 버튼");
@@ -23,5 +24,10 @@ public class GameOverBottonContainer : MonoBehaviour
 #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
 #endif 
+    }
+
+    public void ButtonNext(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
     }
 }
